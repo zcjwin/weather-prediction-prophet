@@ -39,7 +39,8 @@ from prophet import Prophet
 ### 读取数据
 ```python
 path = 'data.csv'
-data = pd.read_csv(path, parse_dates=["ds"]) data_new = data.rename(columns={"date": "ds", "cases": "y"})
+data = pd.read_csv(path, parse_dates=["ds"])
+data_new = data.rename(columns={"date": "ds", "cases": "y"})
 ```
 ### 创建并训练模型
 ```python
@@ -53,7 +54,6 @@ future = m.make_future_dataframe(periods=365)
 ### 进行预测
 ```python
 forecast = m.predict(future)
-
 forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].tail()
 ```
 
